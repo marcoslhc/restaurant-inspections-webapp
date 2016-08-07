@@ -1,0 +1,11 @@
+{
+  "name": "restaurant-inspections-webapp",
+  "version": "0.0.0",
+  "description": "\"Restaurant inspections Web App\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "\"\""
+  },
+  "author": "\"Marcos Hernández <marcoslhc@gmail.com>",
+  "license": "MIT"
+}
