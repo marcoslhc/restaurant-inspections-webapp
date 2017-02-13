@@ -22,7 +22,7 @@ Also you can add your name to the [package.json](https://github.com/Code-for-Mia
 
 ## How
 #### Dependencies
-This is a Reactjs SPA and uses Webpack, Jest, Node.js, NPM, Sass, and React.js
+This is Reactjs SPA using Webpack, Jest, Node.js, NPM, and Sass
 
 #### Install
 1. Download/clone this repository
@@ -33,12 +33,14 @@ This is a Reactjs SPA and uses Webpack, Jest, Node.js, NPM, Sass, and React.js
 More TBD
 
 #### Deploy
-run `npm run build`
+Run `npm run build`
 
 More TBD
 
 #### Testing
 Run `npm test`
+
+More TBD
 
 ## Contribute
 We use the [Integration-Manager Workflow](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow)
