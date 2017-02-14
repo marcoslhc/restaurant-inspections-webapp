@@ -1,6 +1,6 @@
 # Restaurant Inspections Web App
 ## What
-This web app shows information about Miami-Dade County's restaurant inspections, using the [Code For Miami Restaurant Inspection API](https://github.com/Code-for-Miami/restaurant-inspections-api/)
+This web app shows information about Miami-Dade County's restaurant inspections, using this API: [Code For Miami Restaurant Inspection API](https://github.com/Code-for-Miami/restaurant-inspections-api/). It'll make it easier to find out which eateries make the grade, and which ones are failing inspections.
 
 #### Status
 The prototype is currently being built.
@@ -12,34 +12,35 @@ The purpose of the app is show the data in a user friendly way via dashboard, ta
 ## Who
 - [Code for Miami](https://github.com/codeformiami) &lt;[http://codefor.miami/projects](http://codefor.miami/projects)&gt;
 - [Marcos Hernandez](https://github.com/marcoslhc) &lt;[http://xiryvella.com](http://xiryvella.com)&gt;
+- [Tomas Prieto](https://github.com/pancakerobot)
 
 If you contribute please add your name and contact information:
 
 `[Name](https://github.com/username) <[contact info](contact_url)]>`
 
-Also you can add your name to the [package.json](https://github.com/Code-for-Miami/restaurant-inspections-webapp/blob/master/package.json)
-
+Also you can add your name to the [package.json](https://github.com/Code-for-Miami/restaurant-inspections-webapp/blob/develop/package.json)
 
 ## How
 #### Dependencies
-This app is built with [Angular2](https://angular.io) using [TypeScript](https://www.typescriptlang.org/docs/tutorial.html).
-
-You will need:
-- [Node.js](https://nodejs.org/en/) and [npm](https://npmjs.com)
+This is Reactjs SPA using Webpack, Jest, Node.js, NPM, and Sass
 
 #### Install
 1. Download/clone this repository
 2. Enter the project folder
 3. Run `npm install`
+4. Run `npm start`
+
+More TBD
 
 #### Deploy
-TBD
+Run `npm run build`
 
+More TBD
 
 #### Testing
-Run `npm test` for one shot Testing
+Run `npm test`
 
-Run `npm run dev` for run the test on file change (useful for TDD)
+More TBD
 
 ## Contribute
 We use the [Integration-Manager Workflow](https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows#Integration-Manager-Workflow)
@@ -70,4 +71,4 @@ git push origin <branch>            # Push your public fork
 Make a PR from `cool-new-feature` in your fork against `develop` in https://github.com/Code-for-Miami/restaurant-inspections-webapp
 
 ## License
-[LICENSE](https://github.com/Code-for-Miami/restaurant-inspections-webapp/blob/master/LICENSE)
+[LICENSE](https://github.com/Code-for-Miami/restaurant-inspections-webapp/blob/develop/LICENSE)
