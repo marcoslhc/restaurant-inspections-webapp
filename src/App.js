@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './images/logo.svg';
 import './css/App.css';
 import Header from './components/Header'
 import Counties from './components/CountiesComponent';

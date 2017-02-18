@@ -14,7 +14,7 @@ export default class Counties extends React.Component {
     }
 
     componentDidMount() {
-       countiesRequest.get().then(counties => (console.log(counties), counties)).then(counties => this.setState({ counties }));
+       countiesRequest.get().then(counties => this.setState({ counties }));
     }
 
     handleChange(evt) {
@@ -25,7 +25,7 @@ export default class Counties extends React.Component {
         const optionsProps = ({ name, id }) => ({ value: id, key: id, text: name })
         return (<Select name="counties"
                         label="Counties"
-                        options= { this.state.counties.map(optionsProps)}
-                        onChange= { this.handleChange }/>);
+                        options={ this.state.counties.map(optionsProps)}
+                        onChange={ this.handleChange }/>);
     }
 }
