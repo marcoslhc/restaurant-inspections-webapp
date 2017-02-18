@@ -3,7 +3,7 @@ import axios from 'axios';
 // Host for restaurant-inspections-api
 const host                  = 'http://45.55.191.140/';
 
-// Function a, String b, Promise c ~> (a) => (b) => c
+// Function a, String b, Object c ~> (a) => (b) => c
 const createRequestInstance = creator => config  => creator.apply(null, [config]);
 
 // Object a ~> (a) => a
