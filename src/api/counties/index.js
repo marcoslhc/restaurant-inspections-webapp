@@ -1,4 +1,5 @@
 import request from '../request';
+import { map } from '../../utils';
 
 // Endpoint for all counties
 const endpoint      = 'counties';
@@ -7,7 +8,7 @@ const endpoint      = 'counties';
 const mapCountyData = county   => ({ name: county.countyname, id: county.countynumber });
 
 // Array a ~> (a) => a
-const mapCounties   = response => response.map(mapCountyData);
+const mapCounties   = map(mapCountyData);
 
 export default {
     get() {

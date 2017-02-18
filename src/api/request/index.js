@@ -9,7 +9,7 @@ const createRequestInstance = baseURL  => axios.create({ baseURL });
 // Object a ~> (a) => a
 const getResponseData       = response => response.data.data;
 
-// Object a, Promise b ~> (a) => e
+// Object a, Promise b ~> (a) => b
 const handleResponseError   = error    => Promise.reject(error);
 
 // Axios instance for the restaurant-inspections-api
