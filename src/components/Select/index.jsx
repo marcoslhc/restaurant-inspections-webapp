@@ -7,7 +7,7 @@ const Select = ({
     onChange
 }) => (
     <div>
-        <label for={name} />
+        <label htmlFor={name} />
         <select id={ name } name={name} onChange={ onChange }>
             <option value=''>Select one</option>
             {options.map(({value, text, key}) => <option key={ key } value={ value } >{ text }</option>)}
