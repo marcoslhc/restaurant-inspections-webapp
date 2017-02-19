@@ -5,7 +5,8 @@ import { map } from '../../utils';
 const endpoint      = 'counties';
 
 // Object a ~> (a) => a
-const mapCountyData = county   => ({ name: county.countyname, id: county.countynumber });
+const mapCountyData = county   => ({ name : county.countyname,
+                                     id   : county.countynumber });
 
 // Array a ~> (a) => a
 const mapCounties   = map(mapCountyData);
