@@ -22,7 +22,7 @@ export default class BusinessSelect extends React.Component {
     }
 
     render() {
-        const optionsProps = ({ name, id }) => ({ value: id, key: id, text: name })
+        const optionsProps = ({ name, license }) => ({ value: license, key: license, text: name })
         return (<Select name="businesses"
                         label="Businesses"
                         options={ this.state.businesses.map(optionsProps)}
