@@ -1,8 +1,10 @@
 import request from '../request';
 import { map } from '../../utils';
 
-const endpoint = 'businesses';
+// Endpoint for all businesses
+const endpoint        = 'businesses';
 
+// Object a ~> (a) => a
 const mapBusinessData = business => ({ countyId      : business.county_number,
                                        address       : business.location_address,
                                        licenseType   : business.license_type_code,
@@ -12,7 +14,8 @@ const mapBusinessData = business => ({ countyId      : business.county_number,
                                        location      : { latitude  : business.location_latitude,
                                                          longitude : business.location_longitude } });
 
-const mapBusinesses = map(mapBusinessData);
+// Array a ~> (a) => a
+const mapBusinesses   = map(mapBusinessData);
 
 export default {
     get() {
