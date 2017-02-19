@@ -2,7 +2,7 @@ import React from 'react';
 import countiesRequest from '../../api/counties';
 import Select from '../Select';
 
-export default class Counties extends React.Component {
+export default class CountiesSelect extends React.Component {
     constructor(props, context) {
         super(props, context);
 

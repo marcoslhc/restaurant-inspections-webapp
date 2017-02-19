@@ -15,4 +15,4 @@ export default {
         return request.get(`${endpoint}`)
             .then(mapCounties);
     }
-}
+};
