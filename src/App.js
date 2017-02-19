@@ -3,6 +3,7 @@ import './css/App.css';
 import Header from './components/Header'
 import CountiesSelect from './components/CountiesComponents';
 import BusinessesSelect from './components/BusinessesComponents';
+import Inspections from './components/InspectionsComponents/Inspections';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         </p>
         <CountiesSelect/>
         <BusinessesSelect/>
+        <Inspections />
       </div>
     );
   }
