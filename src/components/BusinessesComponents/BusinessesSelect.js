@@ -6,9 +6,7 @@ export default class BusinessSelect extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = {
-            businesses: []
-        };
+        this.state = { businesses: [] };
 
         this.handleChange = this.handleChange.bind(this);
     }

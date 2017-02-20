@@ -5,15 +5,13 @@ import InspectionsTable from './InspectionsTable';
 export default class Inspections extends React.Component {
     constructor(props, context){
         super(props, context);
-        const now = new Date();
+        const now         = new Date();
         const oneMonthAgo = new Date((new Date()).setMonth(now.getMonth() - 1));
 
-        this.state = {
-            from: oneMonthAgo.getTime(),
-            to: now.getTime(),
-            inspections: [],
-            selected: void 0
-        }
+        this.state = { from        : oneMonthAgo.getTime(),
+                       to          : now.getTime(),
+                       inspections : [],
+                       selected    : void 0 };
     }
     componentDidMount() {
         InspectionsAPI.getBetween(this.state.from, this.state.to)
@@ -21,6 +19,9 @@ export default class Inspections extends React.Component {
 
     }
     render() {
-        return (<InspectionsTable from={ this.state.from } to={ this.state.to } inspections={ this.state.inspections } />);
+        return (
+            <InspectionsTable from={ this.state.from }
+                              to={ this.state.to }
+                              inspections={ this.state.inspections } />);
     }
 }

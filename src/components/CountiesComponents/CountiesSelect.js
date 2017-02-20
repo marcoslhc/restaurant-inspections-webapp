@@ -6,9 +6,7 @@ export default class CountiesSelect extends React.Component {
     constructor(props, context) {
         super(props, context);
 
-        this.state = {
-            counties: []
-        };
+        this.state = { counties: [] };
 
         this.handleChange = this.handleChange.bind(this);
     }
