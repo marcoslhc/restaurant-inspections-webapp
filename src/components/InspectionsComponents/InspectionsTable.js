@@ -1,11 +1,15 @@
 import React from 'react';
 
-const InspectionRow = ({ inspection }) => (<tr key={inspection.id}>
-                        <td>{ inspection.businessName}</td>
+const InspectionRow = ({ inspection }) => (<tr>
+                        <td>{ inspection.businessName }</td>
                         <td>{ inspection.inspectionType}</td>
                         <td>{ inspection.inspectionDate }</td>
                         <td>{ inspection.totalViolations }</td>
                     </tr>);
+
+InspectionRow.propTypes = {
+  inspection: React.PropTypes.object.isRequired
+};
 
 const InspectionsTable = ({ from, to, inspections }) => (
     <div>
@@ -20,9 +24,15 @@ const InspectionsTable = ({ from, to, inspections }) => (
                     <th>Total Violations</th>
                 </tr>
             </thead>
-            <tbody>{ inspections.map(inspection => (<InspectionRow inspection={inspection} />)) }</tbody>
+            <tbody>{ inspections.map(inspection => (<InspectionRow key={ inspection.id } inspection={ inspection } />)) }</tbody>
         </table>
     </div>
 );
 
-export default InspectionsTable
+InspectionsTable.propTypes = {
+  from: React.PropTypes.number.isRequired,
+  to: React.PropTypes.number.isRequired,
+  inspections: React.PropTypes.array.isRequired
+};
+
+export default InspectionsTable;

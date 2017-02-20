@@ -18,8 +18,8 @@ const mapBusinessData = business => ({ countyId      : business.county_number,
 const mapBusinesses   = map(mapBusinessData);
 
 export default {
-    get() {
-        return request.get(`${endpoint}`)
-            .then(mapBusinesses);
-    }
+  get() {
+    return request.get(`${endpoint}`)
+      .then(mapBusinesses);
+  }
 };
