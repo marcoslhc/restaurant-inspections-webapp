@@ -22,7 +22,8 @@
     "browser": true,
     "node": true,
     "jquery": true,
-    "mocha": true
+    "mocha": true,
+    "chai": true
     },
   "rules": {
     "import/extensions": 1,
