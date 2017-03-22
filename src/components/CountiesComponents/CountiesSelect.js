@@ -7,7 +7,8 @@ export default class CountiesSelect extends React.Component {
     super(props, context);
 
     this.state = {
-      counties: []
+      counties: [],
+      selectedCounty: 0
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -17,15 +18,19 @@ export default class CountiesSelect extends React.Component {
     countiesRequest.get().then(counties => this.setState({ counties }));
   }
 
-  handleChange(evt) {
+  handleChange(value) {
+    this.props.onCountySelect(value);
   }
 
   render() {
     const optionsProps = ({ name, id }) => ({ value: id, key: id, text: name });
+    const { counties } = this.state;
+    const { selectedCounty } = this.props;
 
     return ( <Select name="counties"
                      label="Counties"
-                     options={ this.state.counties.map(optionsProps) }
-                     onChange={ this.handleChange } />);
+                     options={ counties.map(optionsProps) }
+                     selected={ selectedCounty || 0 }
+                     onSelectChange={ this.handleChange } />);
   }
 }

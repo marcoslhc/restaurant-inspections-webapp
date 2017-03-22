@@ -30,7 +30,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build-css": "node-sass src/sass/ --output src/css/",
-    "watch-css": "node-sass --recursive src/sass/ --output  src/css/"
+    "watch-css": "node-sass --recursive --watch src/sass/ --output  src/css/"
   },
   "license": "MIT"
 }

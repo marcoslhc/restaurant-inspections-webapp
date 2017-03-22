@@ -14,10 +14,9 @@ const mapInspectionsData = inspection => ({ ...inspection });
 // Array a ~> (a) => a
 const mapInspections = map(mapInspectionsData);
 
-
 export default {
-  get() {
-    return request.get(`${endpoint}`)
+  get(params) {
+    return request.get(`${endpoint}`, { params })
       .then(mapInspections);
   },
   getBetween(oldest = Date.now(), newest = Date.now()) {

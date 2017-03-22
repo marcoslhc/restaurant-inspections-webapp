@@ -1,3 +1,7 @@
+@import "variables";
+
 body {
+  font-family: $font;
+  font-size: $base-size;
   background-color: white;
 }

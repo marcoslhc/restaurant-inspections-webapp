@@ -1,0 +1,15 @@
+.InspectionsTable table {
+  width: 100%;
+  border-collapse: collapse; }
+  .InspectionsTable table th {
+    border-bottom: 1px solid black !important;
+    border-collapse: collapse !important;
+    font-size: 21px; }
+  .InspectionsTable table .inspections-table__cell--business-name {
+    text-align: left; }
+  .InspectionsTable table .inspections-table__cell--inspection-type {
+    text-align: left; }
+  .InspectionsTable table .inspections-table__cell--inspection-date {
+    text-align: center; }
+  .InspectionsTable table .inspections-table__cell--total-violations {
+    text-align: center; }

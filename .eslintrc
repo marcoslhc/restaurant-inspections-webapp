@@ -6,7 +6,8 @@
   ],
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "chai-expect"
   ],
   "parserOptions": {
     "esversion": 6,
@@ -23,7 +24,6 @@
     "node": true,
     "jquery": true,
     "mocha": true,
-    "chai": true
     },
   "rules": {
     "import/extensions": 1,

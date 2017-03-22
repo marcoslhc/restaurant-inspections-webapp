@@ -2,20 +2,29 @@
   text-align: center; }
 
 .logo {
-  animation: logo-spin infinite 20s linear;
-  height: 80px; }
+  height: 80px;
+  margin-right: 1em; }
 
 .header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(#ff78a5, #64006b);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white; }
 
+.body {
+  margin-top: 190px; }
+
+h1 {
+  margin-bottom: 0; }
+
 .intro {
   font-size: large; }
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }

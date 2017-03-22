@@ -1,0 +1,20 @@
+.Inspections {
+  position: relative;
+  .controls {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    &>div {
+      display: flex;
+    }
+    background-color: #46afdf;
+    margin: 0 -10px;
+    padding: 1em;
+    color: white;
+  }
+}

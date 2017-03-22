@@ -1,27 +1,22 @@
 import React from 'react';
-
-const InspectionRow = ({ inspection }) => (<tr>
-                        <td>{ inspection.businessName }</td>
-                        <td>{ inspection.inspectionType}</td>
-                        <td>{ inspection.inspectionDate }</td>
-                        <td>{ inspection.totalViolations }</td>
-                    </tr>);
+import InspectionRow from './InspectionRow';
+import '../../css/InspectionsTable.css';
 
 InspectionRow.propTypes = {
   inspection: React.PropTypes.object.isRequired
 };
 
 const InspectionsTable = ({ from, to, inspections }) => (
-    <div>
+    <div className="InspectionsTable">
         <h1>Inspections</h1>
-        <h2>From: from, to: from</h2>
+        <h2>From: { from }, to: { to }</h2>
         <table>
             <thead>
                 <tr>
-                    <th>Business</th>
-                    <th>Inspection Type</th>
-                    <th>Inspection Date</th>
-                    <th>Total Violations</th>
+                    <th className="inspections-table__cell--business-name">Business</th>
+                    <th className="inspections-table__cell--inspection-type">Inspection Type</th>
+                    <th className="inspections-table__cell--inspection-date ">Inspection Date</th>
+                    <th className="inspections-table__cell--total-violations">Total Violations</th>
                 </tr>
             </thead>
             <tbody>{ inspections.map(inspection => (<InspectionRow key={ inspection.id } inspection={ inspection } />)) }</tbody>
@@ -30,8 +25,8 @@ const InspectionsTable = ({ from, to, inspections }) => (
 );
 
 InspectionsTable.propTypes = {
-  from: React.PropTypes.number.isRequired,
-  to: React.PropTypes.number.isRequired,
+  from: React.PropTypes.string.isRequired,
+  to: React.PropTypes.string.isRequired,
   inspections: React.PropTypes.array.isRequired
 };
 

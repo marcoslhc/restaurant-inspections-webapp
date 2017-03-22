@@ -6,6 +6,13 @@ export const map         = (fn) => (target) => isArray(target) ? target.map(fn) 
                                            [].map(fn);
 export const thread      = (value, ...fns) => compose.apply(null, fns.reverse())(value);
 
+// Mixed a ~> a, a, a => (a) => a
+export const toggleValue = (option1, option2, initial) => (value) => value === option1 ?
+  option2 :
+  value === option2 ?
+  option1 :
+  initial;
+
 // String a ~> (a, b) => a
 const jointParam         = (key, value) => [ encodeURIComponent(key), encodeURIComponent(value) ].join('=');
 
@@ -22,6 +29,7 @@ export default {
     compose,
     map,
     thread,
+    toggleValue,
     serializeQS,
     formatDate
 };

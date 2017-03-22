@@ -1,0 +1,15 @@
+.form-control__select .form-control__select__label {
+  display: inline-block;
+  margin-right: 1em; }
+
+.form-control__select .form-control__select__select {
+  display: inline-block;
+  margin-right: 1.5em; }
+  .form-control__select .form-control__select__select.ul {
+    list-style: none;
+    padding: 0; }
+  .form-control__select .form-control__select__select li {
+    margin: 0;
+    display: none; }
+    .form-control__select .form-control__select__select li .selected {
+      display: block; }

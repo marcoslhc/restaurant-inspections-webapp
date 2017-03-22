@@ -4,8 +4,8 @@ import '../css/App.css';
 
 function Header(props) {
   return (<div className="header">
-    <img src={logo} className="logo" alt="logo" />
-    <h2>Code For Miami New Project</h2>
+    <img src={ logo } className="logo" alt="logo" />
+    <h1>Florida Health Department - Bussines Inspections</h1>
   </div>);
 }
 
