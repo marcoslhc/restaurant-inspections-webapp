@@ -46,5 +46,5 @@ Inspections.propTypes = {
   from: React.PropTypes.string,
   to: React.PropTypes.string,
   county: React.PropTypes.number,
-  business: React.PropTypes.string
+  business: React.PropTypes.number
 };

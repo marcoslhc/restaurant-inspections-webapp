@@ -1,6 +1,6 @@
 import React from 'react';
 import Option from './Option';
-import ClassList from '../../utils/ClassList';
+import ClassList, { initialClass } from '../../utils/ClassList';
 
 const OptionsList = ({
   dropdownOpen,
@@ -10,12 +10,13 @@ const OptionsList = ({
   const handleClick = value => () => onClick(value);
 
   const getClassName = () => {
-    return ClassList.of([
-      'dropdown__options',
+    const classes = initialClass(['dropdown__options']);
+    const newClasses = ClassList.of([
       dropdownOpen
         ? 'dropdown__options--visible'
         : 'dropdown__options--hidden'
-    ]).getString();
+    ]);
+    return classes(newClasses).getString();
   };
 
   return (
