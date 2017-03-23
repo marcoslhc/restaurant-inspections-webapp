@@ -26,4 +26,6 @@ ClassList.prototype.addClass = function(className) {
   return ClassList.of(this._classes.concat([className]));
 };
 
+ClassList.prototype.concat = ClassList.prototype.addClass;
+
 export default ClassList;

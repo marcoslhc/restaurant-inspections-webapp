@@ -54,6 +54,7 @@ class Dropdown extends React.Component {
           <OptionSelection text={ selectedOption
                                     ? selectedOption.text
                                     : defaultText || "Select an Option" }
+                           dropdownOpen={ dropdownOpen }
                            onOpenOptions={ this.toggleDropdown }
                            onClearOption={ clearSelection } />
           <OptionsList dropdownOpen={ dropdownOpen }

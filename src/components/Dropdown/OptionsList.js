@@ -12,18 +12,20 @@ const OptionsList = ({
   const getClassName = () => {
     return ClassList.of([
       'dropdown__options',
-      dropdownOpen 
+      dropdownOpen
         ? 'dropdown__options--visible'
         : 'dropdown__options--hidden'
     ]).getString();
   };
 
   return (
-    <div className={ getClassName() }>
-      { options.map(option => (<Option key={ option.value }
-                                       value={ option.value }
-                                       text={ option.text }
-                                       onClick={ handleClick(option.value) }/>)) }
+    <div className="group">
+      <ul className={ getClassName() }>
+        { options.map(option => (<Option key={ option.value }
+                                         value={ option.value }
+                                         text={ option.text }
+                                         onClick={ handleClick(option.value) }/>)) }
+      </ul>
     </div>);
 };
 

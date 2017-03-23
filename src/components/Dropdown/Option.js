@@ -5,8 +5,11 @@ const Option = ({
   text,
   onClick
 }) => {
-  return (<div data-value={ value }
-               onClick={ onClick }>{ text }</div>);
+  return (<li className="dropdown__options__option"
+              data-value={ value }
+              onClick={ onClick }>
+            <span className="dropdown__option__text">{ text }</span>
+          </li>);
 };
 
 Option.propTypes = {
