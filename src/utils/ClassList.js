@@ -1,25 +1,36 @@
-function ClassList(classes = []) {
-  const justStrings = (className) => typeof className === 'string';
-  this._classes = classes instanceof ClassList ? classes.join()
-                  : classes && classes.length > 0 ? classes.filter(justStrings)
-                  : [];
+function ClassList(fn) {
+  this.getClasses = fn;
 }
 
-ClassList.of = function (classes = []) {
-  return new ClassList(classes);
+ClassList.of = function (classes) {
+  return new ClassList(() => {
+    const justStrings = (className) => typeof className === 'string';
+
+    return classes.constructor === ClassList ? classes
+            : classes.constructor === Array ? classes.filter(justStrings)
+            : [];
+  });
+};
+
+ClassList.prototype.toString = function() {
+  return `ClassList(${this.getClasses().toString()})`;
+};
+
+ClassList.prototype.inspect = function () {
+  return this.toString();
 };
 
 ClassList.isInstance = function(instance) {
-  return instance && (instance instanceof ClassList || instance.constructor === ClassList);
+  return instance && instance instanceof ClassList;
 };
 
 ClassList.prototype.map = function(fn) {
-  return ClassList.of(this.classes.map(fn));
+  return ClassList.of(fn(this.getClasses()));
 };
 
 ClassList.prototype.reduce = function(fn, initial) {
   return this.isNothing() ? ClassList.of()
-         : ClassList.of([this._classes.reduce(fn, initial)]);
+         : ClassList.of(this.getClasses().reduce(fn, initial));
 };
 
 ClassList.prototype.filter = function (predicate){
@@ -29,70 +40,60 @@ ClassList.prototype.filter = function (predicate){
   };
 
   return this.isNoting() ? ClassList.of()
-         : ClassList.of(this._classes).reduce(reducer(predicate), []);
+         : ClassList.of(this.getClasses()).reduce(reducer(predicate), []);
 };
 
-ClassList.prototype.mapFilter = function(predicate, fn) {
-  return ClassList.of(this._classes).filter(predicate).map(fn);
+ClassList.prototype.filterMap = function(predicate, fn) {
+  return ClassList.of(this.getClasses()).filter(predicate).map(fn);
 };
 
 ClassList.prototype.filterReduce = function (predicate, fn) {
-  return ClassList.of(this._classes).filter(predicate).reduce(fn);
+  return ClassList.of(this.getClasses()).filter(predicate).reduce(fn);
 };
 
 ClassList.prototype.concat = function(otherClassList) {
 
   return this.isNothing() ? ClassList.of()
-         : ClassList.of(this._classes.concat(otherClassList.join()));
+         : ClassList.of(this.getClasses().concat(otherClassList.getClasses()));
 
 };
 
 ClassList.prototype.join = function () {
-  return this._classes;
+  return new ClassList(() => this.getClasses().getClasses());
 };
 
 ClassList.prototype.chain = function (fn) {
-  return ClassList.of(this._classes).map(fn).join();
+  return ClassList.of(this.getClasses()).map(fn).join();
 };
 
 ClassList.prototype.isNothing = function () {
-  return this._classes === undefined ||
-         this._classes === null ||
-         this._classes.length === 0;
+  return this.getClasses() === undefined ||
+         this.getClasses() === null ||
+         this.getClasses().length === 0;
 };
 
 ClassList.prototype.getString = function () {
-  const reduceFn = (str, nextClass) => str.concat(' ').concat(nextClass);
-  const initialValue = '';
-  return ClassList.of(this._classes).reduce(reduceFn, initialValue).join();
+  return this.getClasses().join(' ');
 };
 
 ClassList.prototype.removeClass = function(className) {
   const predicate = (currentCls) => currentCls !== className;
 
-  return ClassList.of(this._classes).filter(predicate);
+  return ClassList.of(this.getClasses()).filter(predicate);
 };
 
 ClassList.prototype.toggleClass = function (className) {
   const predicate = (currentCls) => currentCls === className;
 
   return ClassList.of(this.__classes).filter(predicate) > 1 ? ClassList.of(this.__classes).removeClass(className)
-         : ClassList.of(this.__classes).addClass(className);
+         : ClassList.of(this.getClasses()).addClass(className);
 };
 
 ClassList.prototype.addClass = function (additionalClass) {
   const classesToAdd = Array.isArray(additionalClass) ? additionalClass
                        : [additionalClass];
 
-  return ClassList.of(this._classes).concat(classesToAdd);
+  return ClassList.of(this.getClasses()).concat(ClassList.of(classesToAdd));
 };
-
-const defaultClass = deftClass => cl => ClassList.isInstance(cl) && !cl.isNothing() ? cl
-                                        : Array.isArray(deftClass) ? ClassList.of(deftClass)
-                                        : ClassList.of([deftClass]);
-
-const initialClass = initClass => cl => defaultClass(initClass)(null).addClass(cl);
-
-export { defaultClass, initialClass };
 
 export default ClassList;
