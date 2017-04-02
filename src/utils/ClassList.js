@@ -1,3 +1,6 @@
+import {compose} from 'ramda';
+import {filterReducer, mapReducer} from './';
+
 function ClassList(fn) {
   this.getClasses = fn;
 }
@@ -44,11 +47,13 @@ ClassList.prototype.filter = function (predicate){
 };
 
 ClassList.prototype.filterMap = function(predicate, fn) {
-  return ClassList.of(this.getClasses()).filter(predicate).map(fn);
+  const reducer = compose(filterReducer(predicate), mapReducer(fn));
+  return ClassList.of(this.getClasses()).reduce(reducer, []);
 };
 
 ClassList.prototype.filterReduce = function (predicate, fn) {
-  return ClassList.of(this.getClasses()).filter(predicate).reduce(fn);
+  const reducer = filterReducer(predicate);
+  return ClassList.of(this.getClasses()).reduce(reducer, []);
 };
 
 ClassList.prototype.concat = function(otherClassList) {
@@ -66,6 +71,10 @@ ClassList.prototype.chain = function (fn) {
   return ClassList.of(this.getClasses()).map(fn).join();
 };
 
+ClassList.prototype.ap = function (other) {
+  return other.map(this.getClasses.bind(this));
+};
+
 ClassList.prototype.isNothing = function () {
   return this.getClasses() === undefined ||
          this.getClasses() === null ||
@@ -79,13 +88,11 @@ ClassList.prototype.getString = function () {
 ClassList.prototype.removeClass = function(className) {
   const predicate = (currentCls) => currentCls !== className;
 
-  return ClassList.of(this.getClasses()).filter(predicate);
+  return ClassList.of(this.getClasses()).reduce(filterReducer(predicate), []);
 };
 
 ClassList.prototype.toggleClass = function (className) {
-  const predicate = (currentCls) => currentCls === className;
-
-  return ClassList.of(this.__classes).filter(predicate) > 1 ? ClassList.of(this.__classes).removeClass(className)
+  return this.getClasses().includes(className) ? ClassList.of(this.getClasses()).removeClass(className)
          : ClassList.of(this.getClasses()).addClass(className);
 };
 

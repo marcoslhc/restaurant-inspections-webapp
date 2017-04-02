@@ -1,34 +1,59 @@
-export const isArray     = (target) => typeof target === 'object' && target.length >= 0;
-export const isObject    = (target) => typeof target === 'object' && !isArray(target);
-export const compose     = (...fns) => (arg) => fns.reduceRight((composed, fn)=> fn(composed),arg);
-export const map         = (fn) => (target) => isArray(target) ? target.map(fn) :
-                                           isObject(target) ? Object.keys(target).map((key) => fn(key, target[key])) :
-                                           [].map(fn);
-export const thread      = (value, ...fns) => compose.apply(null, fns.reverse())(value);
+import {compose, pipe} from 'ramda';
+
+
+export function isObject(target) { return typeof target === 'object' && !Array.isArray(target); }
+
+export function map(fn) {
+  return function (target) {
+    return Array.isArray(target) ? target.map(fn)
+            : isObject(target) ? Object.keys(target).map((key) => fn(key, target[key]))
+            : [].map(fn);
+  };
+}
 
 // Mixed a ~> a, a, a => (a) => a
-export const toggleValue = (option1, option2, initial) => (value) => value === option1 ?
-  option2 :
-  value === option2 ?
-  option1 :
-  initial;
+export function toggleValue(option1, option2, initial) {
+  return function (value) {
+    return value === option1 ? option2
+            : value === option2 ? option1
+            : initial;
+  };
+}
 
 // String a ~> (a, b) => a
-const jointParam         = (key, value) => [ encodeURIComponent(key), encodeURIComponent(value) ].join('=');
+function jointParam(key, value) {
+  return [ encodeURIComponent(key), encodeURIComponent(value) ].join('=');
+}
 
 // Array a, String b ~> (a) => b
-const jointQS            = kv       => kv.join('&');
+function jointQS(kv){
+  return kv.join('&');
+}
 
 // Object a, String b ~> (a) => b
-export const serializeQS = (obj) => '?'.concat(thread(obj, map(jointParam), jointQS));
+export function serializeQS(obj) {
+  return '?'.concat(pipe(map(jointParam), jointQS)(obj));
+}
 
 // Number a, String b ~> (a) => b
-export const formatDate  = date => (new Date(date)).toISOString().split('T')[0];
+export function formatDate(date) {
+  return (new Date(date)).toISOString().split('T')[0];
+}
+
+export function mapReducer(fn) {
+  return function (list, value) {
+    return list.concat(fn(value));
+  };
+}
+export function filterReducer(predicate) {
+  return function (list, value) {
+    if (predicate(value)) return list.concat(value); else return list;
+  };
+}
 
 export default {
     compose,
     map,
-    thread,
     toggleValue,
     serializeQS,
     formatDate

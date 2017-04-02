@@ -7,17 +7,23 @@
     {
       "name": "Marcos Hernández",
       "email": "marcoslhc@gmail.com"
+    },
+    {
+      "name": "Tomas Prieto",
+      "email": "tomasprietojr@gmail.com"
     }
   ],
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "eslint": "^3.15.0",
+    "eslint-plugin-chai-expect": "^1.1.1",
     "eslint-plugin-react": "^6.10.0",
     "node-sass": "^4.5.0",
     "react-scripts": "0.8.5"
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "ramda": "^0.23.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2"
   },
